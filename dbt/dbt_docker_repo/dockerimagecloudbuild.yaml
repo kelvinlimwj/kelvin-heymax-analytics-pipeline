@@ -1,0 +1,17 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args:
+      [
+        "build",
+        "-t",
+        "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner",
+        "./dbt_docker_repo"
+      ]
+
+images:
+  - "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner"
+
+timeout: 1500s
+
+options:
+  logging: CLOUD_LOGGING_ONLY
