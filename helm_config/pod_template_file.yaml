@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: airflow-task
+spec:
+  ttlSecondsAfterFinished: 3600 
+  containers:
+    - name: base
+      image: apache/airflow:2.10.5
+      env:
+        - name: AIRFLOW__CORE__REMOTE_LOGGING
+          value: "True"
+        - name: AIRFLOW__CORE__REMOTE_LOG_CONN_ID
+          value: "google_cloud_default"
+        - name: AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER
+          value: "gs://heymax_kelvin_airflow_logs"
