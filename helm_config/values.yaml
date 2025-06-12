@@ -52,18 +52,14 @@ workers:
     - name: AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER
       value: "gs://heymax_kelvin_airflow_logs"
     - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_configurations/dags
+      value: /opt/airflow/dags
 
 scheduler:
   env:
     - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_configurations/dags
+      value: /opt/airflow/dags
 
 webserver:
   env:
     - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_configurations/dags
-
-kubernetes_executor:
-  namespace: airflow
-  pod_template_file: /opt/airflow/pod_templates/pod_template_file.yaml
+      value: /opt/airflow/dags
