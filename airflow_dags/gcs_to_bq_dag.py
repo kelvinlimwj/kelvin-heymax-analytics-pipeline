@@ -1,6 +1,8 @@
 import sys
 import os
 
+#test 
+
 from scripts.api_to_gcs import fetch_api_and_upload_to_gcs
 from scripts.gcs_to_bq_utils import load_latest_file_to_bq
 from scripts.eventstream_cloudbuild import trigger_dbt_cloud_build
