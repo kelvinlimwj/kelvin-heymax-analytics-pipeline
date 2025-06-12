@@ -5,9 +5,9 @@ dags:
   mountPath: /opt/airflow/dags
   gitSync:
     enabled: true
-    repo: "https://github.com/kelvinlimwj/dbt-bigquery-heymax-analytics.git"
+    repo: "https://github.com/kelvinlimwj/kelvin-heymax-analytics-pipeline.git"
     branch: "main"
-    subPath: "airflow_configurations/dags"
+    subPath: "airflow_dags"
     depth: 1
     period: 5s
     containerName: git-sync
