@@ -73,8 +73,8 @@ with DAG(
             "options": {
                 "requestedVerifyOption": "VERIFIED"
             }
-        },
-        build_config_file="cloudbuild.yaml"
+        }
     )
+
 
     upload_to_gcs >> load_to_bq >> eventstream_build
