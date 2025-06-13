@@ -19,7 +19,7 @@ serviceAccount:
 
 config:
   core:
-    dags_folder: /opt/airflow/dags
+    dags_folder: /opt/airflow/dags/repo/airflow_dags
     executor: KubernetesExecutor
     load_examples: 'False'
     remote_logging: "True"
@@ -52,14 +52,14 @@ workers:
     - name: AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER
       value: "gs://heymax_kelvin_airflow_logs"
     - name: PYTHONPATH
-      value: /opt/airflow/dags
+      value: /opt/airflow/dags/repo/airflow_dags
 
 scheduler:
   env:
     - name: PYTHONPATH
-      value: /opt/airflow/dags
+      value: /opt/airflow/dags/repo/airflow_dags
 
 webserver:
   env:
     - name: PYTHONPATH
-      value: /opt/airflow/dags
+      value: /opt/airflow/dags/repo/airflow_dags
