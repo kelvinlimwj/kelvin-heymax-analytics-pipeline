@@ -59,8 +59,9 @@ with DAG(
         python_callable=trigger_dbt_cloud_build,
         op_kwargs={
             "project_id": "heymax-kelvin-analytics",
-            "trigger_id": "d9f296eb-d9ff-4669-911b-dc2998db6e3d", 
-            "branch": "main"
+            "repo_name": "kelvin-heymax-analytics-pipeline", 
+            "branch": "main",
+            "cloudbuild_dir": "dbt/dbt_bigquery_analytics"
         }
     )
 
