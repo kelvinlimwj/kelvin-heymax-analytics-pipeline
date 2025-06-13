@@ -69,10 +69,7 @@ with DAG(
                 }
             },
             "steps": [], 
-            "timeout": "1200s",
-            "options": {
-                "requestedVerifyOption": "VERIFIED"
-            }
+            "timeout": "1200s"
         }
     )
 
