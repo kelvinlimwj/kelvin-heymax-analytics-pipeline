@@ -65,7 +65,8 @@ with DAG(
                     "project_id": "heymax-kelvin-analytics",
                     "repo_name": "kelvinlimwj-kelvin-heymax-analytics-pipeline",
                     "branch_name": "main",
-                    "dir": "dbt/dbt_bigquery_analytics"
+                    "dir": "dbt/dbt_bigquery_analytics",
+                    "connected_repository": "projects/heymax-kelvin-analytics/locations/asia-southeast1/connections/github-connection/repositories/kelvinlimwj-kelvin-heymax-analytics-pipeline"
                 }
             },
             "steps": [
