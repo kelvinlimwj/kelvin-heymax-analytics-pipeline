@@ -55,20 +55,27 @@ with DAG(
     )
 
     eventstream_build = CloudBuildCreateBuildOperator(
-            task_id = "trigger_eventstream_cloudbuild",
-            project_id = "heymax-kelvin-analytics",
-            gcp_conn_id = "google_cloud_default",
-            impersonation_chain= "848785884148-compute@developer.gserviceaccount.com",
-            build=Build(
-                source=Source(
-                    repo_source=RepoSource(
-                        project_id= "heymax-kelvin-analytics",
-                        repo_name= "kelvin-heymax-analytics-pipeline",
-                        branch_name = "main",
-                        dir = "dbt/dbt_bigquery_analytics",
-                    )
-                ),
-                timeout={"seconds": 1200},  # 20 minutes
-            ),
-        )
+        task_id="trigger_eventstream_cloudbuild",
+        project_id="heymax-kelvin-analytics",
+        gcp_conn_id="google_cloud_default",
+        impersonation_chain="848785884148-compute@developer.gserviceaccount.com",
+        build={
+            "source": {
+                "repo_source": {
+                    "project_id": "heymax-kelvin-analytics",
+                    "repo_name": "kelvin-heymax-analytics-pipeline",
+                    "branch_name": "main",
+                    "dir": "dbt/dbt_bigquery_analytics"
+                }
+            },
+            "steps": [
+                {
+                    "name": "gcr.io/cloud-builders/gcloud",
+                    "args": ["dbt", "run"]
+                }
+            ],
+            "timeout": "1200s"
+        }
+    )
+
     upload_to_gcs >> load_to_bq >> eventstream_build
