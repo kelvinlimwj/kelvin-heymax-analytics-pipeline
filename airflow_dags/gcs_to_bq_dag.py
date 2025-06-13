@@ -65,9 +65,9 @@ with DAG(
                     "object": "build_inputs/dbt_code.zip"
                 }
             },
-            "steps": [],  # ✅ tells Cloud Build to use cloudbuild.yaml in the zip
             "timeout": "1200s"
-        }
+        },
+        build_config="cloudbuild.yaml"  # ✅ Tells Cloud Build to use this inside the zip
     )
 
 
