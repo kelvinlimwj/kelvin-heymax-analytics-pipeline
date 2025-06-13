@@ -65,10 +65,11 @@ with DAG(
                     "object": "build_inputs/dbt_code.zip"
                 }
             },
-            "steps": [], 
+            "steps": [],  # ✅ tells Cloud Build to use cloudbuild.yaml in the zip
             "timeout": "1200s"
         }
     )
+
 
 
     upload_to_gcs >> load_to_bq >> eventstream_build
