@@ -63,7 +63,7 @@ with DAG(
             "source": {
                 "repo_source": {  
                     "project_id": "heymax-kelvin-analytics",
-                    "repo_name": "kelvin-heymax-analytics-pipeline",
+                    "repo_name": "kelvinlimwj-kelvin-heymax-analytics-pipeline",
                     "branch_name": "main",
                     "dir": "dbt/dbt_bigquery_analytics"
                 }
@@ -76,7 +76,7 @@ with DAG(
             ],
             "timeout": "1200s",
             "options": {
-                "requested_verify_option": "NOT_VERIFIED"  # also snake_case
+                "requested_verify_option": "NOT_VERIFIED" 
             }
         }
     )
