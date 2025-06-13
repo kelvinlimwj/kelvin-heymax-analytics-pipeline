@@ -1,14 +1,14 @@
 import sys
 import os
 
-#test 
-
 from scripts.api_to_gcs import fetch_api_and_upload_to_gcs
 from scripts.gcs_to_bq_utils import load_latest_file_to_bq
-from scripts.eventstream_cloudbuild import trigger_dbt_cloud_build
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.providers.google.cloud.operators.cloud_build import CloudBuildCreateBuildOperator
+from google.cloud.devtools.cloudbuild_v1.types import Build, Source, RepoSource
+
 from datetime import datetime
 
 # Update here for file name when API is called
@@ -28,7 +28,7 @@ with DAG(
     start_date=datetime(2024, 1, 1),
     schedule_interval='@daily',
     catchup=False,
-    tags=['api', 'gcs', 'bigquery']
+    tags=['api', 'gcs', 'bigquery', 'cloudbuild', 'dbt']
 ) as dag:
 
     upload_to_gcs = PythonOperator(
@@ -54,15 +54,21 @@ with DAG(
         }
     )
 
-    eventstream_build = PythonOperator(
-        task_id="eventstream_dbt_run",
-        python_callable=trigger_dbt_cloud_build,
-        op_kwargs={
-            "project_id": "heymax-kelvin-analytics",
-            "repo_name": "kelvin-heymax-analytics-pipeline", 
-            "branch": "main",
-            "cloudbuild_dir": "dbt/dbt_bigquery_analytics"
-        }
-    )
-
+    eventstream_build = CloudBuildCreateBuildOperator(
+            task_id = "trigger_eventstream_cloudbuild",
+            project_id = "heymax-kelvin-analytics",
+            gcp_conn_id = "google_cloud_default",
+            impersonation_chain= "848785884148-compute@developer.gserviceaccount.com",
+            build=Build(
+                source=Source(
+                    repo_source=RepoSource(
+                        project_id= "heymax-kelvin-analytics",
+                        repo_name= "kelvin-heymax-analytics-pipeline",
+                        branch_name = "main",
+                        dir = "dbt/dbt_bigquery_analytics",
+                    )
+                ),
+                timeout={"seconds": 1200},  # 20 minutes
+            ),
+        )
     upload_to_gcs >> load_to_bq >> eventstream_build
