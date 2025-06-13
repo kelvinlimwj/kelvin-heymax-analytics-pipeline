@@ -1,44 +1,60 @@
 from google.auth import default
 from google.auth import impersonated_credentials
 from google.cloud.devtools import cloudbuild_v1
-from google.cloud.devtools.cloudbuild_v1.types import RepoSource
+from google.cloud.devtools.cloudbuild_v1.types import Build, Source, RepoSource
 from airflow.exceptions import AirflowException
 
-def trigger_dbt_cloud_build(project_id: str, trigger_id: str, branch: str = "main") -> None:
+def trigger_dbt_cloud_build(
+    project_id: str,
+    repo_name: str,
+    branch: str,
+    cloudbuild_dir: str,
+    impersonate_service_account: str = "848785884148-compute@developer.gserviceaccount.com"
+) -> None:
     """
-    Triggers a Cloud Build trigger using impersonated credentials.
+    Trigger a Cloud Build job from a repo using impersonated credentials.
 
-    :param project_id: Your GCP project ID
-    :param trigger_id: The ID of the Cloud Build trigger
-    :param branch: Git branch to build from (default: main)
+    Args:
+        project_id (str): GCP project ID.
+        repo_name (str): Name of the connected Cloud Source Repository.
+        branch (str): Branch name (default is "main").
+        cloudbuild_dir (str): Directory containing cloudbuild.yaml.
+        impersonate_service_account (str): GSA to impersonate for triggering the build.
     """
     try:
-        # 1. Get default credentials from environment (Workload Identity)
+        # Step 1: Get default credentials via Workload Identity
         source_credentials, _ = default()
 
-        # 2. Impersonate the target service account
+        # Step 2: Impersonate the GSA with Cloud Build permissions
         target_credentials = impersonated_credentials.Credentials(
             source_credentials=source_credentials,
-            target_principal="848785884148-compute@developer.gserviceaccount.com",
+            target_principal=impersonate_service_account,
             target_scopes=["https://www.googleapis.com/auth/cloud-platform"],
             lifetime=3600,
         )
 
-        # 3. Use impersonated credentials for Cloud Build client
+        # Step 3: Initialize Cloud Build client with impersonated credentials
         client = cloudbuild_v1.CloudBuildClient(credentials=target_credentials)
 
-        # 4. Trigger the build
-        build_operation = client.run_build_trigger(
-            project_id=project_id,
-            trigger_id=trigger_id,
-            source=RepoSource(branch_name=branch)
+        # Step 4: Define build from source repo (triggerless build)
+        build = Build(
+            source=Source(
+                repo_source=RepoSource(
+                    project_id=project_id,
+                    repo_name=repo_name,
+                    branch_name=branch,
+                    dir=cloudbuild_dir  # 👈 cloudbuild.yaml is inside this folder
+                )
+            ),
+            timeout={"seconds": 1200}
         )
 
-        print(f"[Cloud Build] Trigger started. Waiting for build to complete...")
-        build_result = build_operation.result()  # Waits for build to finish
+        print("[Cloud Build] Triggering manual build...")
+        operation = client.create_build(project_id=project_id, build=build)
+        result = operation.result()
 
-        status = build_result.status.name
-        build_id = build_result.id
+        status = result.status.name
+        build_id = result.id
         print(f"[Cloud Build] Build finished. ID: {build_id}, Status: {status}")
 
         if status != "SUCCESS":
