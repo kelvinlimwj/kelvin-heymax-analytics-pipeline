@@ -1,9 +1,6 @@
 executor: KubernetesExecutor
 airflowVersion: "2.10.5"
 
-# Define your GCP IAM service account once and reuse it
-gcpServiceAccount: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
-
 dags:
   mountPath: /opt/airflow/dags
   gitSync:
@@ -16,11 +13,17 @@ dags:
     containerName: git-sync
     uid: 65533
 
+gcpServiceAccount: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
+
+serviceAccount:
+  create: false
+  name: airflow-kubernetes
+
 scheduler:
   serviceAccount:
     name: airflow-scheduler
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+      iam.gke.io/gcp-service-account: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
   env:
     - name: PYTHONPATH
       value: /opt/airflow/dags/repo/airflow_dags
@@ -29,7 +32,7 @@ webserver:
   serviceAccount:
     name: airflow-webserver
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+      iam.gke.io/gcp-service-account: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
   env:
     - name: PYTHONPATH
       value: /opt/airflow/dags/repo/airflow_dags
@@ -38,7 +41,7 @@ workers:
   serviceAccount:
     name: airflow-worker
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+      iam.gke.io/gcp-service-account: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
   env:
     - name: AIRFLOW__CORE__REMOTE_LOGGING
       value: "True"
@@ -53,7 +56,7 @@ triggerer:
   serviceAccount:
     name: airflow-triggerer
     annotations:
-      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+      iam.gke.io/gcp-service-account: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
 
 config:
   core:
