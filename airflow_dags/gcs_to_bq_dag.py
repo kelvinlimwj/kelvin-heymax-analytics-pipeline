@@ -60,13 +60,11 @@ with DAG(
         gcp_conn_id="google_cloud_default",
         impersonation_chain="848785884148-compute@developer.gserviceaccount.com",
         build={
-            "source": {
-                "repoSource": {
-                    "projectId": "heymax-kelvin-analytics",
-                    "repoName": "kelvin-heymax-analytics-pipeline",
-                    "branchName": "main",
-                    "dir": "dbt/dbt_bigquery_analytics"
-                }
+            "repoSource": {
+                "projectId": "heymax-kelvin-analytics",
+                "repoName": "kelvin-heymax-analytics-pipeline",
+                "branchName": "main",
+                "dir": "dbt/dbt_bigquery_analytics"
             },
             "steps": [
                 {
@@ -80,5 +78,6 @@ with DAG(
             }
         }
     )
+
 
     upload_to_gcs >> load_to_bq >> eventstream_build
