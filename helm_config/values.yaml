@@ -1,6 +1,9 @@
 executor: KubernetesExecutor
 airflowVersion: "2.10.5"
 
+# Define your GCP IAM service account once and reuse it
+gcpServiceAccount: airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com
+
 dags:
   mountPath: /opt/airflow/dags
   gitSync:
@@ -12,10 +15,45 @@ dags:
     period: 5s
     containerName: git-sync
     uid: 65533
-      
-serviceAccount:
-  create: false
-  name: airflow-kubernetes
+
+scheduler:
+  serviceAccount:
+    name: airflow-scheduler
+    annotations:
+      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+  env:
+    - name: PYTHONPATH
+      value: /opt/airflow/dags/repo/airflow_dags
+
+webserver:
+  serviceAccount:
+    name: airflow-webserver
+    annotations:
+      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+  env:
+    - name: PYTHONPATH
+      value: /opt/airflow/dags/repo/airflow_dags
+
+workers:
+  serviceAccount:
+    name: airflow-worker
+    annotations:
+      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
+  env:
+    - name: AIRFLOW__CORE__REMOTE_LOGGING
+      value: "True"
+    - name: AIRFLOW__CORE__REMOTE_LOG_CONN_ID
+      value: "google_cloud_default"
+    - name: AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER
+      value: "gs://heymax_kelvin_airflow_logs"
+    - name: PYTHONPATH
+      value: /opt/airflow/dags/repo/airflow_dags
+
+triggerer:
+  serviceAccount:
+    name: airflow-triggerer
+    annotations:
+      iam.gke.io/gcp-service-account: {{ .Values.gcpServiceAccount }}
 
 config:
   core:
@@ -26,9 +64,9 @@ config:
     remote_log_conn_id: "google_cloud_default"
     remote_base_log_folder: "gs://heymax_kelvin_airflow_logs"
     auth_manager: "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager"
-  
+
   kubernetes:
-    delete_worker_pods: "False"
+    delete_worker_pods: "True"
 
   logging:
     remote_logging: "True"
@@ -42,24 +80,3 @@ connections:
   - id: google_cloud_default
     type: google_cloud_platform
     extra: '{"extra__google_cloud_platform__project":"heymax-kelvin-analytics"}'
-
-workers:
-  env:
-    - name: AIRFLOW__CORE__REMOTE_LOGGING
-      value: "True"
-    - name: AIRFLOW__CORE__REMOTE_LOG_CONN_ID
-      value: "google_cloud_default"
-    - name: AIRFLOW__CORE__REMOTE_BASE_LOG_FOLDER
-      value: "gs://heymax_kelvin_airflow_logs"
-    - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_dags
-
-scheduler:
-  env:
-    - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_dags
-
-webserver:
-  env:
-    - name: PYTHONPATH
-      value: /opt/airflow/dags/repo/airflow_dags
