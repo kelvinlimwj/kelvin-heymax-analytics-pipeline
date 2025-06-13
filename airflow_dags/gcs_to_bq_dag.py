@@ -60,9 +60,12 @@ with DAG(
         gcp_conn_id="google_cloud_default",
         build={
             "source": {
-                "repository": "projects/heymax-kelvin-analytics/locations/asia-southeast1/connections/github-connection/repositories/kelvinlimwj-kelvin-heymax-analytics-pipeline",
-                "ref": "refs/heads/main", 
-                "dir": "dbt/dbt_bigquery_analytics"
+                "repo_source": {
+                    "project_id": "heymax-kelvin-analytics",
+                    "repo_name": "kelvin-heymax-analytics-pipeline",
+                    "branch_name": "main",
+                    "dir": "dbt/dbt_bigquery_analytics"
+                }
             },
             "steps": [
                 {
