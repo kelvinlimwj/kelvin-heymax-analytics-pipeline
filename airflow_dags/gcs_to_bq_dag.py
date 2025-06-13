@@ -58,7 +58,6 @@ with DAG(
         task_id="trigger_eventstream_cloudbuild",
         project_id="heymax-kelvin-analytics",
         gcp_conn_id="google_cloud_default",
-        impersonation_chain="848785884148-compute@developer.gserviceaccount.com",
         build={
             "source": {
                 "repo_source": {  
