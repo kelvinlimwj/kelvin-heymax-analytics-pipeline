@@ -58,6 +58,7 @@ with DAG(
         task_id="trigger_eventstream_cloudbuild",
         project_id="heymax-kelvin-analytics",
         gcp_conn_id="google_cloud_default",
+        impersonation_chain="airflow-kubernetes@heymax-kelvin-analytics.iam.gserviceaccount.com",
         build={
             "source": {
                 "repo_source": {
@@ -67,18 +68,13 @@ with DAG(
                     "dir": "dbt/dbt_bigquery_analytics"
                 }
             },
-            "steps": [
-                {
-                    "name": "gcr.io/cloud-builders/gcloud",
-                    "args": ["dbt", "run"]
-                }
-            ],
+            "steps": [], 
             "timeout": "1200s",
             "options": {
-                "requested_verify_option": "VERIFIED"  # now that repo is linked
+                "requestedVerifyOption": "VERIFIED"
             }
-        }
+        },
+        build_config_file="cloudbuild.yaml"
     )
-
 
     upload_to_gcs >> load_to_bq >> eventstream_build
