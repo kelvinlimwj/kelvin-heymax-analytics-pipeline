@@ -61,10 +61,10 @@ with DAG(
         impersonation_chain="848785884148-compute@developer.gserviceaccount.com",
         build={
             "source": {
-                "repo_source": {
-                    "project_id": "heymax-kelvin-analytics",
-                    "repo_name": "kelvin-heymax-analytics-pipeline",
-                    "branch_name": "main",
+                "repoSource": {
+                    "projectId": "heymax-kelvin-analytics",
+                    "repoName": "kelvin-heymax-analytics-pipeline",
+                    "branchName": "main",
                     "dir": "dbt/dbt_bigquery_analytics"
                 }
             },
@@ -74,7 +74,10 @@ with DAG(
                     "args": ["dbt", "run"]
                 }
             ],
-            "timeout": "1200s"
+            "timeout": "1200s",
+            "options": {
+                "requestedVerifyOption": "NOT_VERIFIED"
+            }
         }
     )
 
