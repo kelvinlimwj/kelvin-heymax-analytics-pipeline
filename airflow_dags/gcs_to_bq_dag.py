@@ -60,16 +60,24 @@ with DAG(
         gcp_conn_id="google_cloud_default",
         build={
             "source": {
-                "storage_source": {
-                    "bucket": "heymax_kelvin_raw_data_sg",
-                    "object": "build_inputs/dbt_code.zip"
+                "repo_source": {  
+                    "project_id": "heymax-kelvin-analytics",
+                    "repo_name": "kelvinlimwj-kelvin-heymax-analytics-pipeline",
+                    "branch_name": "main",
+                    "dir": "dbt/dbt_bigquery_analytics"
                 }
             },
-            "timeout": "1200s"
-        },
-        build_config="cloudbuild.yaml"  # ✅ Tells Cloud Build to use this inside the zip
+            "steps": [
+                {
+                    "name": "gcr.io/cloud-builders/gcloud",
+                    "args": ["dbt", "run"]
+                }
+            ],
+            "timeout": "1200s",
+            "options": {
+                "requested_verify_option": "NOT_VERIFIED" 
+            }
+        }
     )
-
-
 
     upload_to_gcs >> load_to_bq >> eventstream_build
