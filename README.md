@@ -1,4 +1,4 @@
-# HeyMax Analytics Pipeline Repository
+# HeyMax Analytics Pipelines & Data Tables Repository
 
 This repository contains the configuration, orchestration, and transformation layers of a modern data pipeline deployed on Google Cloud Platform (GCP), from Airflow DAGs to dbt configurations, and Kubernetes cluster configuration. The project is organized into the following directories:
 
@@ -38,3 +38,29 @@ This folder contains:
 - Helm repository installed on Google Cloud Server via Cloud Shell
 - Airflow Instance on Kubernetes Cluster
 
+# 📊 Table Data Dictionaries
+
+## 🧑 `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
+
+Contains metadata about each user in the system.
+
+| **Column Name** | **Data Type** | **Description** |
+|-----------------|---------------|------------------|
+| `user_id`       | STRING        | Unique identifier for each user. Primary key of the table. |
+| `country`       | STRING        | Country of the user, typically based on registration IP or profile information. |
+
+---
+
+## 🎯 `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
+
+Captures user-generated events such as transactions and platform interactions.
+
+| **Column Name**        | **Data Type** | **Description** |
+|------------------------|---------------|------------------|
+| `user_id`              | STRING        | Foreign key linking to `dim_users.user_id`. Identifies the user performing the event. |
+| `utm_source`           | STRING        | UTM source from marketing attribution (e.g., "facebook", "google", "email"). |
+| `transaction_category` | STRING        | Category of the transaction or event (e.g., "purchase", "redemption"). |
+| `platform`             | STRING        | Platform on which the event occurred (e.g., "iOS", "Android", "Web"). |
+| `event_type`           | STRING        | Type of event (e.g., "signup", "purchase", "login"). |
+| `event_time`           | TIMESTAMP     | Timestamp indicating when the event occurred. |
+| `miles_amount`         | FLOAT         | Amount of miles (or reward points) earned or spent during the event. |
