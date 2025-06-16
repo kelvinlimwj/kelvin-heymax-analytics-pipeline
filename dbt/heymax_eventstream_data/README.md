@@ -1,6 +1,7 @@
 # Tables:
 
 Table transformation logic found under `models/marts/`
+
 Source table logic found under `models/staging/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
