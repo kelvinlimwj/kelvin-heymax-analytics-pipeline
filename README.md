@@ -7,8 +7,9 @@ Contains Apache Airflow DAGs used to orchestrate and schedule data pipeline task
 
 Source tables used in our dbt runs can be found in the README.md of this folder.
 
-Pipeline DAGs include:
-- API data ingestion into GCS and automated uploads into BigQuery
+DAG tasks include:
+- API data ingestion into GCS
+- Automated uploads into BigQuery
 - Kafka Streaming directly into BigQuery
 - Triggering Cloud Build jobs
 - Executing dbt transformations like dbt deps/test/run (configurations can be found in dbt folder)
