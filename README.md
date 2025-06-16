@@ -35,7 +35,7 @@ This folder contains:
 - Helm repository installed on Google Cloud Server via Cloud Shell
 - Airflow Instance on Kubernetes Cluster
 
-# 📊 Table Data Dictionaries 
+# 📊 Table Data Dictionaries Summary
 
 ## 🧑 `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
