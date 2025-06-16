@@ -35,6 +35,7 @@ Stores Helm charts and configuration values for deploying Airflow on a Kubernete
 # 📊 Table Data Dictionaries Summary
 
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
+> **Project:** `dbt\heymax_eventstream_data\`
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 
 Contains metadata about each user in the system.
@@ -47,6 +48,7 @@ Contains metadata about each user in the system.
 ---
 
 ## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
+> **Project:** `dbt\heymax_eventstream_data\`
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
 
 Captures user-generated events such as transactions and platform interactions.
