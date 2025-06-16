@@ -39,7 +39,7 @@ Data Dictionaries can be found in the individual project folders.
 > 
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 >
-> Description: Captures user-generated events and platform interactions.
+> Description: Captures user-generated events, platform interactions and event miles accumulation.
 
 # Additional Information: 
 
