@@ -6,7 +6,7 @@ steps:
       - |
         mkdir -p /builder/home/.dbt
         cat > /builder/home/.dbt/profiles.yml <<EOF
-        dbt_bigquery_analytics:
+        heymax_eventstream_data:
           target: dev
           outputs:
             dev:
