@@ -19,18 +19,6 @@ Includes individual folders for each dbt project, and anything that is related t
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying Airflow on a Kubernetes cluster via GKE (Google Kubernetes Engine).
 
-### What this project aims to do:
-- Automate data ingestion from external API
-- Leverage Kubernetes and Helm for cloud-native orchestration and deployment
-- Build scalable and modular data pipelines using Airflow and dbt
-- Create clean, trustworthy and usable datasets for downstream users to support analytics functions (e.g. Dashboarding in Looker) within HeyMax.
-
-### Requirements
-- GCP project with BigQuery, Cloud Storage, Cloud Build, Cloud Functions enabled
-- Kubernetes cluster (e.g., GKE)
-- Helm repository installed on Google Cloud Server via Cloud Shell
-- Airflow Instance on Kubernetes Cluster
-
 # 📊 Table Data Dictionaries Summary
 
 Data Dictionaries can be found in the individual project folders.
@@ -52,3 +40,17 @@ Contains metadata about each user in the system.
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
 
 Captures user-generated events and platform interactions.
+
+# Additional Information: 
+
+### What this project aims to do:
+- Automate data ingestion from external API
+- Leverage Kubernetes and Helm for cloud-native orchestration and deployment
+- Build scalable and modular data pipelines using Airflow and dbt
+- Create clean, trustworthy and usable datasets for downstream users to support analytics functions (e.g. Dashboarding in Looker) within HeyMax.
+
+### Requirements
+- GCP project with BigQuery, Cloud Storage, Cloud Build, Cloud Functions enabled
+- Kubernetes cluster (e.g., GKE)
+- Helm repository installed on Google Cloud Server via Cloud Shell
+- Airflow Instance on Kubernetes Cluster
