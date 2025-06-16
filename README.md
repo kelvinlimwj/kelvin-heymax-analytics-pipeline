@@ -23,7 +23,7 @@ This folder contains:
 Stores Helm charts and configuration values for deploying components (like Airflow) on a Kubernetes cluster, such as GKE (Google Kubernetes Engine).
 
 This folder contains:
-- `values.yaml`: Custom Helm values for intializiing Airflow onto Kubernetes Cluster
+- `values.yaml`: Custom Helm values for intializing Airflow onto Kubernetes Cluster
 - `pod_templates/`: Kubernetes pod templates for execution via KubernetesExecutor
 
 ### 🚀 What this project aims to do:
