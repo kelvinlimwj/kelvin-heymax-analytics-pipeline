@@ -1,5 +1,7 @@
 # Tables:
 
+Table transformation logic found under `models/marts/`
+
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 
