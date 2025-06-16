@@ -55,7 +55,7 @@ with DAG(
     )
 
     eventstream_build = CloudBuildCreateBuildOperator(
-        task_id="trigger_eventstream_cloudbuild",
+        task_id="eventstream_cloudbuild",
         project_id="heymax-kelvin-analytics",
         gcp_conn_id="google_cloud_default",
         build={
