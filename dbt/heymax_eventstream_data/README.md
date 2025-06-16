@@ -7,8 +7,6 @@ Source table logic found under `models/staging/`
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 
-Contains metadata about each user in the system.
-
 | **Column Name** | **Data Type** | **Description** |
 |-----------------|---------------|------------------|
 | `user_id`       | STRING        | Unique identifier for each user. Primary key of the table. |
@@ -17,8 +15,6 @@ Contains metadata about each user in the system.
 
 ## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
-
-Captures user-generated events such as transactions and platform interactions.
 
 | **Column Name**        | **Data Type** | **Description** |
 |------------------------|---------------|------------------|
