@@ -38,9 +38,10 @@ This folder contains:
 - Helm repository installed on Google Cloud Server via Cloud Shell
 - Airflow Instance on Kubernetes Cluster
 
-# 📊 Table Data Dictionaries
+# 📊 Table Data Dictionaries 
 
 ## 🧑 `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
+> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 
 Contains metadata about each user in the system.
 
@@ -52,6 +53,7 @@ Contains metadata about each user in the system.
 ---
 
 ## 🎯 `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
+> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
 
 Captures user-generated events such as transactions and platform interactions.
 
