@@ -28,7 +28,7 @@ Data Dictionaries can be found in the individual project folders.
 > 
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
 >
-> Description: Contains metadata about each user in the system.
+> Description: Contains metadata about each user in the system. Only consists of user_id, country now. Should aim to include more dimensions such as name, phone_number, email, DOB, signup_date etc.
 
 ---
 
