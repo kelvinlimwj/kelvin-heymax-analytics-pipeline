@@ -1,7 +1,7 @@
 name: 'heymax_eventstream_data'
 version: '1.0.0'
 
-profile: 'dbt_bigquery_analytics'
+profile: 'heymax_eventstream_data'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
