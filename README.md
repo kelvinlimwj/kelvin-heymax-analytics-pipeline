@@ -43,7 +43,8 @@ Data Dictionaries can be found in the individual project folders.
 # Additional Information: 
 
 ### What this project aims to do:
-- Automate data ingestion from external API
+- Automate data ingestion from external API for batch processing pipelines.
+- Utilise Kafka for data streaming with Google Dataflow for real-time data pipelines.
 - Leverage Kubernetes and Helm for cloud-native orchestration and deployment
 - Build scalable and modular data pipelines using Airflow and dbt
 - Create clean, trustworthy and usable datasets for downstream users to support analytics functions (e.g. Dashboarding in Looker) within HeyMax.
