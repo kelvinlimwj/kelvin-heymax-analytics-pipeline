@@ -1,6 +1,6 @@
 # Airflow DAGs
 
-This directory contains Apache Airflow DAGs for orchestrating data ingestion and processing pipelines on Google Cloud Platform.
+This directory contains Apache Airflow DAGs for orchestrating data ingestion and processing pipelines on GCP.
 
 ## 📄 DAGs Overview
 
