@@ -1,7 +1,7 @@
 # dbt
 
 This folder contains:
-- Sub folders for each individual dbt project, transformation logic can be found inside each subfolder's `models\` folder.
+- Individual folders for each dbt project, transformation logic can be found inside each subfolder's `models\` folder.
 - `dbt_docker_repo/`: Repo consisting of dbt docker image generation configurations into Artifact Registry
 - `dbt_cloud_functions/` : Scripts for Google Cloud Functions and their corresponding requirements
 
