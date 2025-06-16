@@ -5,7 +5,7 @@ This repository contains the configuration, orchestration, and transformation la
 ## 📂 airflow_dags
 Contains Apache Airflow DAGs used to orchestrate and schedule data pipeline tasks. These DAGs manage the flow of data from external sources into GCP services like Google Cloud Storage (GCS) and BigQuery. 
 
-Source tables used in our dbt runs can be found in the README.md of this folder.
+Source tables affected by each pipeline can be found in this folder's README.
 
 DAG tasks include:
 - API data ingestion into GCS
