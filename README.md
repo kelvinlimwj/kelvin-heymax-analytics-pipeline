@@ -19,10 +19,6 @@ Includes anything that is related to dbt, mainly responsible for transforming ra
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying components (like Airflow) on a Kubernetes cluster, such as GKE (Google Kubernetes Engine).
 
-This folder contains:
-- `values.yaml`: Custom Helm values for intializing Airflow onto Kubernetes Cluster
-- `pod_templates/`: Kubernetes pod templates for execution via KubernetesExecutor
-
 ### 🚀 What this project aims to do:
 - Automate data ingestion from external API
 - Leverage Kubernetes and Helm for cloud-native orchestration and deployment
