@@ -37,5 +37,5 @@ This folder contains:
 - GCP project with BigQuery, Cloud Storage, Cloud Build, Cloud Functions enabled
 - Kubernetes cluster (e.g., GKE)
 - Helm repository installed on Google Cloud Server via Cloud Shell
-- Airflow Deployment on Kubernetes Cluster
+- Airflow Instance on Kubernetes Cluster
 
