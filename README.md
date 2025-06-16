@@ -12,13 +12,12 @@ Pipeline DAGs include:
 - Executing dbt transformations like dbt deps/test/run (configurations can be found in dbt folder)
 
 ## 📂 dbt
-Includes the dbt (Data Build Tool) project responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
+Includes anything that is related to dbt, mainly responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
 
 This folder contains:
-- `models/`: SQL models defining transformations
-- `dbt_project.yml`: Configuration file for the dbt project
-- `profiles.yml`: Connection profile to GCP BigQuery
-- 'cloudbuild.yaml' : YAML file for cloudbuild trigger configuration
+- Sub folders for each individual dbt projects, transformation logic can be found inside each subfolder's README.
+- `dbt_docker_repo/`: YAML file for generating and storing of dbt docker image into Artifact Registry
+- 'dbt_cloudfunctions/' : Scripts for Cloud Functions
 
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying components (like Airflow) on a Kubernetes cluster, such as GKE (Google Kubernetes Engine).
