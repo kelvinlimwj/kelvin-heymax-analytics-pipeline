@@ -2,7 +2,7 @@
 
 This directory contains Apache Airflow DAGs for orchestrating data ingestion and processing pipelines on GCP.
 
-## 📄 DAGs Overview
+## DAGs Overview
 
 | File Name                  | Description                                                                                                   | Table          |
 |---------------------------|---------------------------------------------------------------------------------------------------------------|----------------|
@@ -10,7 +10,7 @@ This directory contains Apache Airflow DAGs for orchestrating data ingestion and
 | `test_gcs_logging_dag.py` | Test DAG to validate logging and GCS event handling logic. Primarily used for validation and debugging.        | N.A.   |
 
 
-## 📁 Other Files and Folders
+## Other Files and Folders
 
 | Name             | Type        | Description                                                         |
 |------------------|-------------|-----------------------------------------------------------------------------|
@@ -18,7 +18,7 @@ This directory contains Apache Airflow DAGs for orchestrating data ingestion and
 | `scripts/`       | Folder      | Contains helper modules or utility functions used across DAGs.              |
 
 
-## 🚀 How to use:
+## How to use:
 
 1. Drop DAGs into the root of `airflow_dags` directory (This is the directory!).
 2. Drop DAG task scripts into `scripts/` folder.
