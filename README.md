@@ -34,6 +34,8 @@ Stores Helm charts and configuration values for deploying Airflow on a Kubernete
 
 # 📊 Table Data Dictionaries Summary
 
+Data Dictionaries can be found in the individual project folders.
+
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 
 > **Project:** `dbt\heymax_eventstream_data\`
