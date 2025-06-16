@@ -15,7 +15,7 @@ DAG tasks include:
 - Executing dbt transformations like dbt deps/test/run (configurations can be found in dbt folder)
 
 ## 📂 dbt
-Includes anything that is related to dbt, mainly responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
+Includes individual folders for each dbt project, and anything that is related to dbt (configurations, profiles, dbt docker image generation etc), mainly responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
 
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying Airflow on a Kubernetes cluster via GKE (Google Kubernetes Engine).
