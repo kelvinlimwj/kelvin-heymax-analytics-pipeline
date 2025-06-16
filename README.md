@@ -16,8 +16,8 @@ Includes anything that is related to dbt, mainly responsible for transforming ra
 
 This folder contains:
 - Sub folders for each individual dbt project, transformation logic can be found inside each subfolder's README.
-- `dbt_docker_repo/`: YAML file for generating and storing of dbt docker image into Artifact Registry
-- `dbt_cloud_functions/` : Scripts for Cloud Functions
+- `dbt_docker_repo/`: Repo consisting of dbt docker image generation configurations into Artifact Registry
+- `dbt_cloud_functions/` : Scripts for Google Cloud Functions and their corresponding requirements
 
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying components (like Airflow) on a Kubernetes cluster, such as GKE (Google Kubernetes Engine).
