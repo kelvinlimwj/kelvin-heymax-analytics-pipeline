@@ -1,4 +1,4 @@
-# HeyMax Event Streaming Analytics Pipeline Repository
+# HeyMax Analytics Pipeline Repository
 
 This repository contains the configuration, orchestration, and transformation layers of a modern data pipeline deployed on Google Cloud Platform (GCP), from Airflow DAGs to dbt configurations, and Kubernetes cluster configuration. The project is organized into the following directories:
 
@@ -15,9 +15,9 @@ Pipeline DAGs include:
 Includes anything that is related to dbt, mainly responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
 
 This folder contains:
-- Sub folders for each individual dbt projects, transformation logic can be found inside each subfolder's README.
+- Sub folders for each individual dbt project, transformation logic can be found inside each subfolder's README.
 - `dbt_docker_repo/`: YAML file for generating and storing of dbt docker image into Artifact Registry
-- `dbt_cloudfunctions/` : Scripts for Cloud Functions
+- `dbt_cloud_functions/` : Scripts for Cloud Functions
 
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying components (like Airflow) on a Kubernetes cluster, such as GKE (Google Kubernetes Engine).
