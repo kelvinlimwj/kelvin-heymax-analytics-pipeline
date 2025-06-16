@@ -69,7 +69,7 @@ config:
     auth_manager: "airflow.providers.fab.auth_manager.fab_auth_manager.FabAuthManager"
 
   kubernetes:
-    delete_worker_pods: "False"
+    delete_worker_pods: "True"
 
   logging:
     remote_logging: "True"
