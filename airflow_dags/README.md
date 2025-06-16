@@ -6,7 +6,7 @@ This directory contains Apache Airflow DAGs for orchestrating data ingestion and
 
 | File Name                | Description                                                                 |
 |-------------------------|-----------------------------------------------------------------------------|
-| `gcs_to_bq_dag.py`      | Ingests data from a Google Cloud Storage bucket and loads it into BigQuery. |
+| `eventstream_pipeline.py` | Calls API and stores data into GCS bucket and automates loading into BigQuery, then triggers dbt run. |
 | `test_gcs_logging_dag.py` | Test DAG to validate logging and GCS event handling logic.               |
 
 ## 📁 Other Files and Folders
@@ -23,6 +23,3 @@ This directory contains Apache Airflow DAGs for orchestrating data ingestion and
 2. Drop DAG task scripts into `scripts/` folder.
 3. Make sure DAG py script references the correct task scripts from the `scripts/` folder!
 4. Test/Trigger/Monitor DAGs from the Airflow UI or CLI.
-
-
-
