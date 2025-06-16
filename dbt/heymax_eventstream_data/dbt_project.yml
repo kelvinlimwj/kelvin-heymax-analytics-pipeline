@@ -1,4 +1,4 @@
-name: 'dbt_bigquery_analytics'
+name: 'heymax_eventstream_data'
 version: '1.0.0'
 
 profile: 'dbt_bigquery_analytics'
@@ -15,6 +15,6 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  dbt_bigquery_analytics:
+  heymax_eventstream_data:
     example:
       +materialized: view
