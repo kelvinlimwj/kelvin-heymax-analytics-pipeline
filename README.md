@@ -1,6 +1,6 @@
-# Kelvin HeyMax Analytics Pipeline Repository
+# HeyMax Event Streaming Analytics Pipeline Repository
 
-This repository contains the configuration, orchestration, and transformation layers of a modern data pipeline deployed on Google Cloud Platform (GCP). The project is organized into the following directories:
+This repository contains the configuration, orchestration, and transformation layers of a modern data pipeline deployed on Google Cloud Platform (GCP), from Airflow DAGs to dbt configurations, and Kubernetes cluster configuration. The project is organized into the following directories:
 
 ## 📂 airflow_dags
 Contains Apache Airflow DAGs used to orchestrate and schedule data pipeline tasks. These DAGs manage the flow of data from external sources into GCP services like Google Cloud Storage (GCS) and BigQuery.
