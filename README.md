@@ -28,8 +28,8 @@ Data Dictionaries can be found in the individual project folders.
 > **Project:** `dbt\heymax_eventstream_data\`
 > 
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
-
-Contains metadata about each user in the system.
+>
+> Description: Contains metadata about each user in the system.
 
 ---
 
@@ -37,9 +37,9 @@ Contains metadata about each user in the system.
 
 > **Project:** `dbt\heymax_eventstream_data\`
 > 
-> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
-
-Captures user-generated events and platform interactions.
+> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
+>
+> Description: Captures user-generated events and platform interactions.
 
 # Additional Information: 
 
