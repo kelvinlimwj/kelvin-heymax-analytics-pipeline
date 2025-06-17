@@ -1,9 +1,9 @@
 SELECT
   user_id,
   event_time,
-  DATE(e.event_time) AS event_day,
-  FORMAT_DATE('%G-W%V', DATE(e.event_time)) AS event_week,
-  FORMAT_DATE('%Y-%m', DATE(e.event_time)) AS event_month,
+  DATE(event_time) AS event_day,
+  FORMAT_DATE('%G-W%V', DATE(event_time)) AS event_week,
+  FORMAT_DATE('%Y-%m', DATE(event_time)) AS event_month,
   event_type,
   platform,
   utm_source,
