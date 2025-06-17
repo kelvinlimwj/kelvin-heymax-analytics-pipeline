@@ -7,8 +7,11 @@ SELECT
   event_type,
   platform,
   utm_source,
-  transaction_category,
-  miles_amount,
+    CASE 
+    WHEN miles_amount IS NULL AND transaction_category IS NULL THEN 'others'
+    ELSE transaction_category
+  END AS transaction_category,
+  COALESCE(e.miles_amount, 0) AS miles_amount,
   CASE 
     WHEN miles_amount IS NULL THEN 'engagement'
     ELSE 'miles_activity'
