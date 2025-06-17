@@ -10,7 +10,7 @@ SELECT
   transaction_category,
   miles_amount,
   CASE 
-    WHEN e.miles_amount IS NULL THEN 'engagement'
+    WHEN miles_amount IS NULL THEN 'engagement'
     ELSE 'miles_activity'
   END AS event_category
 FROM {{ ref('stg_event_stream') }}
