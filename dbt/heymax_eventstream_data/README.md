@@ -1,4 +1,4 @@
-# Tables:
+# Core Tables:
 
 Table transformation logic found under `models/marts/`
 
