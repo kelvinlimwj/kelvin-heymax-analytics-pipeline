@@ -18,31 +18,9 @@ Includes individual folders for each dbt project, and anything that is related t
 ## 📂 helm_config
 Stores Helm charts and configuration values for deploying Airflow on a Kubernetes cluster via GKE (Google Kubernetes Engine).
 
-# 📊 Table Data Dictionaries Summary
-
-Data Dictionaries can be found in the individual project folders.
-
-## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
-
-> **Project:** `dbt\heymax_eventstream_data\`
-> 
-> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
->
-> Description: Contains metadata about each user in the system. Only consists of user_id, country now. Should aim to include more dimensions such as name, phone_number, email, DOB, signup_date etc.
-
----
-
-## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
-
-> **Project:** `dbt\heymax_eventstream_data\`
-> 
-> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
->
-> Description: Captures user-generated events, platform interactions and event miles accumulation.
-
 # Additional Information: 
 
-### What this project aims to do:
+### Use cases:
 - Automate data ingestion from external API for batch processing pipelines.
 - Utilise Kafka for data streaming with Google Dataflow for real-time data pipelines.
 - Leverage Kubernetes and Helm for cloud-native orchestration and deployment

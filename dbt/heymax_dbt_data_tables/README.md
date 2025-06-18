@@ -1,9 +1,10 @@
-# Core Tables:
-
+# Core Tables: 
 Table transformation logic found under `models/marts/core_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw` 
+
+> Description: Contains metadata about each user in the system. Only consists of user_id, country now. Should aim to include more dimensions such as name, phone_number, email, DOB, signup_date etc.
 
 | **Column Name** | **Data Type** | **Description** |
 |-----------------|---------------|------------------|
@@ -13,6 +14,8 @@ Table transformation logic found under `models/marts/core_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
+
+> Description: Captures user-generated events, platform interactions and event miles accumulation.
 
 | Column Name           | Data Type | Description                                                                                   |
 |------------------------|-----------|-------------------------------|
@@ -30,7 +33,6 @@ Table transformation logic found under `models/marts/core_tables/`
 
 
 # Analytics Tables:
-
 Table transformation logic found under `models/marts/analytics_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.user_attrition_data` – User Attrition Data Table
@@ -44,4 +46,4 @@ Use Case: HeyMax User Activity and Attrition Dashboard https://lookerstudio.goog
 | `event_week`  | `STRING`  | ISO-formatted year-week (e.g., `2025-W24`) representing the week the user was active. |
 | `prev_week`   | `STRING`  | The previous week (`event_week`) in which the user was active. Calculated using `LAG()`. |
 | `next_week`   | `STRING`  | The next week (`event_week`) in which the user was active. Calculated using `LEAD()`. |
-| `user_status` | `STRING`  | Classification of the user’s activity status for the given week. Values:<br>• `New`: User appears for the first time this week.<br>• `Retained`: User was active last week and continues to be active this week.<br>• `Churned`: User was active last week but not in any future week.<br>• `Resurrected`: User was active in a past week, churned, and returned this week.<br>*(Note: Logic may need refinement to accurately capture resurrection.)* |
+| `user_status` | `STRING`  | Classification of the user’s activity status for the given week. Values:<br>• `New`: User appears for the first time this week.<br>• `Retained`: User was active last week and continues to be active this week.<br>• `Churned`: User was active last week but not in any future week.<br>• `Resurrected`: User was active in a past week, churned, and returned this week.<br>* |
