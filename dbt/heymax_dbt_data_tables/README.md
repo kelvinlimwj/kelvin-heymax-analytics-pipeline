@@ -2,10 +2,8 @@
 
 Table transformation logic found under `models/marts/core/`
 
-Source table logic found under `models/staging/`
-
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
-> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`
+> **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw` 
 
 | **Column Name** | **Data Type** | **Description** |
 |-----------------|---------------|------------------|
@@ -31,11 +29,14 @@ Source table logic found under `models/staging/`
 | `event_category`       | STRING    | Classification of the event as either `'miles_activity'` or `'engagement'` |
 
 
-# Dashboard Tables:
+# Analytics Tables:
+
+Table transformation logic found under `models/marts/analytics/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.user_attrition_data` – User Attrition Data Table
 > **Source Tables:** `heymax-kelvin-analytics.heymax_analytics.dim_users` / `heymax-kelvin-analytics.heymax_analytics.fct_events` 
 
+Use Case: HeyMax User Activity and Attrition Dashboard https://lookerstudio.google.com/reporting/819c1ac8-762e-4fb9-ac34-94d2ef2c20ba/page/7uDOF
 
 | Column Name   | Data Type | Description |
 |---------------|-----------|-------------|
