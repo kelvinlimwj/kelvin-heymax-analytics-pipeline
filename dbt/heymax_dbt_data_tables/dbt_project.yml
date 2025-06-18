@@ -1,7 +1,7 @@
-name: 'heymax_eventstream_data'
+name: 'heymax_dbt_data_tables'
 version: '1.0.0'
 
-profile: 'heymax_eventstream_data'
+profile: 'heymax_dbt_data_tables'
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -15,6 +15,12 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  heymax_eventstream_data:
-    example:
+  heymax_dbt_data_tables:
+    staging:
       +materialized: view
+    marts:
+      core_tables:
+        +materialized: table
+      dashboard_tables:
+        +materialized: table
+        

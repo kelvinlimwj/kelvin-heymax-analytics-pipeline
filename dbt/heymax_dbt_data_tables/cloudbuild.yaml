@@ -6,7 +6,7 @@ steps:
       - |
         mkdir -p /builder/home/.dbt
         cat > /builder/home/.dbt/profiles.yml <<EOF
-        heymax_eventstream_data:
+        heymax_dbt_data_tables:
           target: dev
           outputs:
             dev:
