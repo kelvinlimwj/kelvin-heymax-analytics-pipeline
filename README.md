@@ -11,7 +11,7 @@ Contains Apache Airflow DAGs and their respective <b>source tables</b>. These DA
 - Helm repository installed on Google Cloud Server via Cloud Shell
 - Airflow Instance on Kubernetes Cluster
 
-DAG tasks include:
+### DAG tasks include:
 - API data ingestion into GCS
 - Automated uploads into BigQuery
 - Kafka Streaming directly into BigQuery
@@ -25,13 +25,6 @@ Includes individual folders for each dbt project, and anything that is related t
 Stores Helm charts and configuration values for deploying Airflow on a Kubernetes cluster via GKE (Google Kubernetes Engine).
 
 # Additional Information: 
-
-### Use cases:
-- Automate data ingestion from external API for batch processing pipelines.
-- Utilise Kafka for data streaming with Google Dataflow for real-time data pipelines.
-- Leverage Kubernetes and Helm for cloud-native orchestration and deployment
-- Build scalable and modular data pipelines using Airflow and dbt
-- Create clean, trustworthy and usable datasets for downstream users to support analytics functions (e.g. Dashboarding in Looker) within HeyMax.
 
 ### Analytics Dashboards:
 
