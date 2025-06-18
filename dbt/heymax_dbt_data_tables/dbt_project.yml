@@ -21,6 +21,6 @@ models:
     marts:
       core_tables:
         +materialized: table
-      dashboard_tables:
+      analytics_tables:
         +materialized: table
         

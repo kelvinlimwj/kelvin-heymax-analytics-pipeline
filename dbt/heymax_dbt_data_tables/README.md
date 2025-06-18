@@ -1,6 +1,6 @@
 # Core Tables:
 
-Table transformation logic found under `models/marts/core/`
+Table transformation logic found under `models/marts/core_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw` 
@@ -31,7 +31,7 @@ Table transformation logic found under `models/marts/core/`
 
 # Analytics Tables:
 
-Table transformation logic found under `models/marts/analytics/`
+Table transformation logic found under `models/marts/analytics_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.user_attrition_data` – User Attrition Data Table
 > **Source Tables:** `heymax-kelvin-analytics.heymax_analytics.dim_users` / `heymax-kelvin-analytics.heymax_analytics.fct_events` 
