@@ -1,6 +1,6 @@
 # Core Tables:
 
-Table transformation logic found under `models/marts/`
+Table transformation logic found under `models/marts/core/`
 
 Source table logic found under `models/staging/`
 
