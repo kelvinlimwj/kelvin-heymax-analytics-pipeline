@@ -16,13 +16,17 @@ Source table logic found under `models/staging/`
 ## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
 > **Source Table:** `heymax-kelvin-analytics.heymax_analytics.event_stream_raw`  
 
-| **Column Name**        | **Data Type** | **Description** |
-|------------------------|---------------|------------------|
-| `user_id`              | STRING        | Foreign key linking to `dim_users.user_id`. Identifies the user performing the event. |
-| `utm_source`           | STRING        | UTM source from marketing attribution (e.g., "facebook", "google", "email"). |
-| `transaction_category` | STRING        | Category of the transaction or event (e.g., "purchase", "redemption"). |
-| `platform`             | STRING        | Platform on which the event occurred (e.g., "iOS", "Android", "Web"). |
-| `event_type`           | STRING        | Type of event (e.g., "signup", "purchase", "login"). |
-| `event_time`           | TIMESTAMP     | Timestamp indicating when the event occurred. |
-| `miles_amount`         | FLOAT         | Amount of miles (or reward points) earned or spent during the event. |
+| Column Name           | Data Type | Description                                                                                   |
+|------------------------|-----------|-------------------------------|
+| `user_id`              | STRING    | Unique identifier for the user who triggered the event.                                       |
+| `event_time`           | TIMESTAMP | Exact timestamp when the event occurred.                                                      |
+| `event_day`            | DATE      | Calendar date of the event (used for Daily Active Users tracking).                           |
+| `event_week`           | STRING    | ISO week string in the format `YYYY-Www` (e.g., `2025-W14`) for WAU analysis.                |
+| `event_month`          | STRING    | Calendar month in the format `YYYY-MM` for MAU analysis.                                      |
+| `event_type`           | STRING    | Type of event performed (e.g., `miles_earned`, `share`).                                      |
+| `platform`             | STRING    | Platform where the event occurred (e.g., `web`, `android`, `ios`).                           |
+| `utm_source`           | STRING    | Marketing attribution source (e.g., `google`, `tiktok`, `organic`).                          |
+| `transaction_category` | STRING    | Category of the transaction (e.g., `dining`, `ecommerce`, `others`). Nulls are replaced with `'others'`. |
+| `miles_amount`         | FLOAT     | Number of miles associated with the event. Nulls are replaced with `0`.                      |
+| `event_category`       | STRING    | Classification of the event as either `'miles_activity'` (if `miles_amount` exists) or `'engagement'` (otherwise). |
 
