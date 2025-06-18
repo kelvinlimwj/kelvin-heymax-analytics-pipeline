@@ -30,3 +30,17 @@ Source table logic found under `models/staging/`
 | `miles_amount`         | FLOAT     | Number of miles associated with the event|
 | `event_category`       | STRING    | Classification of the event as either `'miles_activity'` or `'engagement'` |
 
+
+# Dashboard Tables:
+
+## `heymax-kelvin-analytics.heymax_analytics.user_attrition_data` – User Attrition Data Table
+> **Source Tables:** `heymax-kelvin-analytics.heymax_analytics.dim_users` / `heymax-kelvin-analytics.heymax_analytics.fct_events` 
+
+
+| Column Name   | Data Type | Description |
+|---------------|-----------|-------------|
+| `user_id`     | `STRING`  | Unique identifier of the user. |
+| `event_week`  | `STRING`  | ISO-formatted year-week (e.g., `2025-W24`) representing the week the user was active. |
+| `prev_week`   | `STRING`  | The previous week (`event_week`) in which the user was active. Calculated using `LAG()`. |
+| `next_week`   | `STRING`  | The next week (`event_week`) in which the user was active. Calculated using `LEAD()`. |
+| `user_status` | `STRING`  | Classification of the user’s activity status for the given week. Values:<br>• `New`: User appears for the first time this week.<br>• `Retained`: User was active last week and continues to be active this week.<br>• `Churned`: User was active last week but not in any future week.<br>• `Resurrected`: User was active in a past week, churned, and returned this week.<br>*(Note: Logic may need refinement to accurately capture resurrection.)* |
