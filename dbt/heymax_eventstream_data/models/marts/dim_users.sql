@@ -1,3 +1,7 @@
+{{ config(
+    materialized='table'
+) }}
+
 WITH ranked_users AS (
   SELECT
     user_id,
