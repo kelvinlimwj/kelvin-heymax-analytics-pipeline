@@ -1,7 +1,3 @@
-{{ config(
-    materialized='table'
-) }}
-
 SELECT
   user_id,
   event_time,
