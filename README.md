@@ -5,6 +5,12 @@ This repository contains the configuration, orchestration, and transformation la
 ## 📂 airflow_dags
 Contains Apache Airflow DAGs and their respective <b>source tables</b>. These DAGs manage the flow of data from external sources into GCP services like Google Cloud Storage (GCS) and BigQuery via REST APIs or Kafka Streaming.
 
+### Airflow Set Up:
+- GCP project with BigQuery, Cloud Storage, Cloud Build, Cloud Functions enabled
+- Kubernetes cluster (e.g., GKE)
+- Helm repository installed on Google Cloud Server via Cloud Shell
+- Airflow Instance on Kubernetes Cluster
+
 DAG tasks include:
 - API data ingestion into GCS
 - Automated uploads into BigQuery
@@ -27,8 +33,8 @@ Stores Helm charts and configuration values for deploying Airflow on a Kubernete
 - Build scalable and modular data pipelines using Airflow and dbt
 - Create clean, trustworthy and usable datasets for downstream users to support analytics functions (e.g. Dashboarding in Looker) within HeyMax.
 
-### Requirements
-- GCP project with BigQuery, Cloud Storage, Cloud Build, Cloud Functions enabled
-- Kubernetes cluster (e.g., GKE)
-- Helm repository installed on Google Cloud Server via Cloud Shell
-- Airflow Instance on Kubernetes Cluster
+### Analytics Dashboards:
+
+HeyMax User Activity and User Attrition Dashboard : https://lookerstudio.google.com/reporting/819c1ac8-762e-4fb9-ac34-94d2ef2c20ba/page/p_sx1q7zgjtd
+
+(more to come in future...)
