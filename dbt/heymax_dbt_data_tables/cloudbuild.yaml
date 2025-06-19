@@ -1,5 +1,7 @@
 steps:
   - name: asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:prod
+    id: Build dbt tables
+    dir: dbt/heymax_dbt_data_tables
     entrypoint: bash
     args:
       - -c
