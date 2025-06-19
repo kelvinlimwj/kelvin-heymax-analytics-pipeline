@@ -3,11 +3,11 @@ import os
 
 from scripts.api_to_gcs import fetch_api_and_upload_to_gcs
 from scripts.gcs_to_bq_utils import load_latest_file_to_bq
+from scripts.trigger_cloud_build.py import trigger_cloud_build
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.providers.google.cloud.operators.cloud_build import CloudBuildTriggerJobRunOperator
-from google.cloud.devtools.cloudbuild_v1.types import Build, Source, RepoSource
+from google.cloud.devtools import cloudbuild_v1
 
 from datetime import datetime
 
@@ -54,11 +54,14 @@ with DAG(
         }
     )
 
-    dbt_tables_build_trigger = CloudBuildTriggerJobRunOperator(
-        task_id="build_dbt_tables",
-        project_id="heymax-kelvin-analytics",
-        trigger_id="27913271-5713-4023-a2dc-64ea260788c9",
-        gcp_conn_id="google_cloud_default"
+    dbt_tables_build_trigger = PythonOperator(
+        task_id='dbt_run_trigger',
+        python_callable=trigger_cloud_build,
+        op_kwargs={
+            "project_id": "heymax-kelvin-analytics",
+            "trigger_id": "27913271-5713-4023-a2dc-64ea260788c9",
+            "branch_name": "main"
+        }
     )
 
     upload_to_gcs >> load_to_bq >> dbt_tables_build_trigger
