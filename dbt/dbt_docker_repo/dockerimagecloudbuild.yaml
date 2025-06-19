@@ -38,7 +38,7 @@ steps:
               threads: 4
         EOF
 
-        cd /workspace
+        cd dbt/heymax_dbt_data_tables
         ls -al
         dbt deps --profiles-dir /builder/home/.dbt
         dbt seed --profiles-dir /builder/home/.dbt
