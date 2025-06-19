@@ -20,6 +20,7 @@ steps:
   # Step 3: Run validation tests (e.g. dbt test)
   - name: asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging
     id: Run DBT Tests
+    dir: dbt/heymax_dbt_data_tables 
     entrypoint: bash
     args:
       - -c
@@ -38,7 +39,6 @@ steps:
               threads: 4
         EOF
 
-        cd dbt/heymax_dbt_data_tables
         ls -al
         dbt deps --profiles-dir /builder/home/.dbt
         dbt seed --profiles-dir /builder/home/.dbt
