@@ -6,6 +6,7 @@ steps:
       "build",
       "--no-cache",
       "-t", "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging",
+       "-f", "dbt/dbt_docker_repo/Dockerfile",
       "."
     ]
 
