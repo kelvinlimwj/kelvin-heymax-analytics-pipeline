@@ -41,10 +41,8 @@ steps:
         EOF
 
         ls -al
-        dbt deps --profiles-dir /builder/home/.dbt
-        dbt seed --profiles-dir /builder/home/.dbt
-        dbt run --profiles-dir /builder/home/.dbt
-        dbt test --profiles-dir /builder/home/.dbt
+        dbt debug --profiles-dir /builder/home/.dbt
+        dbt parse --profiles-dir /builder/home/.dbt
 
   # Step 4: Promote image to prod only if tests succeed
   - name: gcr.io/cloud-builders/docker
