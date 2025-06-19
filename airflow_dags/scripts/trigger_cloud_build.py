@@ -2,19 +2,18 @@ from airflow.operators.python import PythonOperator
 from google.cloud.devtools import cloudbuild_v1
 
 def trigger_cloud_build(project_id: str, trigger_id: str, branch_name: str = "main"):
-    client = cloudbuild_v1.CloudBuildClient()
+    credentials = Credentials()
+    credentials.refresh(Request())
+    print("🧠 Using identity:", credentials.service_account_email)
 
-    # Construct the source
-    repo_source = cloudbuild_v1.RepoSource(branch_name=branch_name)
+    client = cloudbuild_v1.CloudBuildClient(credentials=credentials)
 
-    # Correct usage — no `parent` argument
     request = cloudbuild_v1.RunBuildTriggerRequest(
         project_id=project_id,
         trigger_id=trigger_id,
-        source=repo_source
+        source=cloudbuild_v1.RepoSource(branch_name=branch_name)
     )
 
-    # Submit the build trigger
     operation = client.run_build_trigger(request=request)
     result = operation.result(timeout=600)
-    print("Build triggered. Status:", result.status)
+    print("✅ Build triggered. Status:", result.status)
