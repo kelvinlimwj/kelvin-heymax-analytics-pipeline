@@ -23,7 +23,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='api_to_gcs_then_bq',
+    dag_id='dbt_tables_refresh',
     default_args=default_args,
     start_date=datetime(2024, 1, 1),
     schedule_interval='@daily',
@@ -54,30 +54,11 @@ with DAG(
         }
     )
 
-    eventstream_build = CloudBuildCreateBuildOperator(
-        task_id="eventstream_cloudbuild",
+    dbt_tables_build_trigger = CloudBuildTriggerJobRunOperator(
+        task_id="build_dbt_tables",
         project_id="heymax-kelvin-analytics",
-        gcp_conn_id="google_cloud_default",
-        build={
-            "source": {
-                "repo_source": {  
-                    "project_id": "heymax-kelvin-analytics",
-                    "repo_name": "kelvinlimwj-kelvin-heymax-analytics-pipeline",
-                    "branch_name": "main",
-                    "dir": "dbt/dbt_bigquery_analytics"
-                }
-            },
-            "steps": [
-                {
-                    "name": "gcr.io/cloud-builders/gcloud",
-                    "args": ["dbt", "run"]
-                }
-            ],
-            "timeout": "1200s",
-            "options": {
-                "requested_verify_option": "NOT_VERIFIED" 
-            }
-        }
+        trigger_id="27913271-5713-4023-a2dc-64ea260788c9",
+        gcp_conn_id="google_cloud_default"
     )
 
-    upload_to_gcs >> load_to_bq >> eventstream_build
+    upload_to_gcs >> load_to_bq >> dbt_tables_build_trigger
