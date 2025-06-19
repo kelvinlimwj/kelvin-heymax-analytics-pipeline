@@ -20,14 +20,30 @@ steps:
   # Step 3: Run validation tests (e.g. dbt test)
   - name: asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging
     id: Run DBT Tests
-    entrypoint: "bash"
+    entrypoint: bash
     args:
-      - "-c"
+      - -c
       - |
-        dbt deps
-        dbt seed
-        dbt run
-        dbt test
+        mkdir -p /builder/home/.dbt
+        cat > /builder/home/.dbt/profiles.yml <<EOF
+        heymax_dbt_data_tables:
+          target: dev
+          outputs:
+            dev:
+              type: bigquery
+              method: oauth
+              project: heymax-kelvin-analytics
+              dataset: heymax_analytics
+              location: US
+              threads: 4
+        EOF
+
+        cd /workspace
+        ls -al
+        dbt deps --profiles-dir /builder/home/.dbt
+        dbt seed --profiles-dir /builder/home/.dbt
+        dbt run --profiles-dir /builder/home/.dbt
+        dbt test --profiles-dir /builder/home/.dbt
 
   # Step 4: Promote image to prod only if tests succeed
   - name: gcr.io/cloud-builders/docker
