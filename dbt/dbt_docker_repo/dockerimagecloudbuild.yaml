@@ -1,17 +1,49 @@
 steps:
+  # Step 1: Build the image from latest base
   - name: gcr.io/cloud-builders/docker
+    id: Build Image
+    args: [
+      "build",
+      "--no-cache",
+      "-t", "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging",
+      "./dbt_docker_repo"
+    ]
+
+  # Step 2: Push the staging image
+  - name: gcr.io/cloud-builders/docker
+    id: Push Image
+    args: [
+      "push",
+      "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging"
+    ]
+
+  # Step 3: Run validation tests (e.g. dbt test)
+  - name: asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging
+    id: Run DBT Tests
+    entrypoint: "bash"
     args:
-      [
-        "build",
-        "-t",
-        "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner",
-        "./dbt_docker_repo"
-      ]
+      - "-c"
+      - |
+        dbt deps
+        dbt seed
+        dbt run
+        dbt test
+
+  # Step 4: Promote image to prod only if tests succeed
+  - name: gcr.io/cloud-builders/docker
+    id: Promote to Prod
+    args: [
+      "tag",
+      "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging",
+      "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:prod"
+    ]
+
+  - name: gcr.io/cloud-builders/docker
+    id: Push Prod Image
+    args: [
+      "push",
+      "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:prod"
+    ]
 
 images:
-  - "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner"
-
-timeout: 1500s
-
-options:
-  logging: CLOUD_LOGGING_ONLY
+  - "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:prod"
