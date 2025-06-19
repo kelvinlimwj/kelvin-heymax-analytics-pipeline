@@ -6,7 +6,7 @@ from scripts.gcs_to_bq_utils import load_latest_file_to_bq
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
-from airflow.providers.google.cloud.operators.cloud_build import CloudBuildCreateBuildOperator
+from airflow.providers.google.cloud.operators.cloud_build import CloudBuildTriggerJobRunOperator
 from google.cloud.devtools.cloudbuild_v1.types import Build, Source, RepoSource
 
 from datetime import datetime
