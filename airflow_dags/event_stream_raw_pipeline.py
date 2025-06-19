@@ -3,7 +3,7 @@ import os
 
 from scripts.api_to_gcs import fetch_api_and_upload_to_gcs
 from scripts.gcs_to_bq_utils import load_latest_file_to_bq
-from scripts.trigger_cloud_build.py import trigger_cloud_build
+from scripts.trigger_cloud_build import trigger_cloud_build
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
