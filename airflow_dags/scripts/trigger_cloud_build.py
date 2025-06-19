@@ -1,5 +1,6 @@
-from airflow.operators.python import PythonOperator
 from google.cloud.devtools import cloudbuild_v1
+from google.auth.transport.requests import Request
+from google.auth.compute_engine.credentials import Credentials
 
 def trigger_cloud_build(project_id: str, trigger_id: str, branch_name: str = "main"):
     credentials = Credentials()
