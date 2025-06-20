@@ -47,7 +47,7 @@ with DAG(
         python_callable=load_latest_file_to_bq,
         op_kwargs={
             "project_id": "heymax-kelvin-analytics",
-            "dataset_id": "heymax_analytics",
+            "dataset_id": "heymax_source",
             "table_id": "event_stream_raw",
             "bucket_name": "heymax_kelvin_raw_data_sg",
             "gcs_folder": "event_stream_data"
