@@ -43,4 +43,4 @@ models:
         description: "Country code"
         tests:
           - accepted_values:
-              values: ["SG", "MY", "TH", "PH", "VN"]
+              values: ["SG", "MY", "TH", "PH", "ID"]
