@@ -19,11 +19,10 @@ models:
     staging:
       +materialized: table
       +dataset: heymax_staging
-    marts:
-      core_tables:
-        +materialized: table
-        +dataset: heymax_core
-      analytics_tables:
-        +materialized: view
-        +dataset: heymax_analytics
+    marts/core_tables:
+      +materialized: table
+      +dataset: heymax_core
+    marts/analytics_tables:
+      +materialized: view
+      +dataset: heymax_analytics
         
