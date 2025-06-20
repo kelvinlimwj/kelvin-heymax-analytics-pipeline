@@ -12,6 +12,7 @@ Contains Apache Airflow DAGs and their respective <b>source tables</b>. These DA
 - Airflow Instance on Kubernetes Cluster
 
 ### DAG tasks include:
+- Daily Refresh of dbt Docker Image to latest updated version (Includes running dbt debug/test to ensure no version conflicts during dbt run)
 - API data ingestion into GCS
 - Automated uploads into BigQuery
 - Kafka Streaming directly into BigQuery
@@ -22,7 +23,7 @@ Contains Apache Airflow DAGs and their respective <b>source tables</b>. These DA
 Includes individual folders for each dbt project, and anything that is related to dbt (configurations, profiles, dbt docker image generation etc), mainly responsible for transforming raw data in BigQuery into clean, structured models (e.g., dimensional models like `dim_users` and fact tables like `fct_events`).
 
 ## 📂 helm_config
-Stores Helm charts and configuration values for deploying Airflow on a Kubernetes cluster via GKE (Google Kubernetes Engine).
+Stores Helm charts and configuration values for deployed Airflow instance on Kubernetes cluster via GKE (Google Kubernetes Engine).
 
 # Additional Information: 
 

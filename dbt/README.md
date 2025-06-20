@@ -1,7 +1,7 @@
 # dbt
 
 This folder contains:
-- `heymax_dbt_data_tables`: Repo for dbt build tasks for both core tables (for downstream end users) and analytics tables (scheduled views and dashboarding in Looker). Transformation logic and data dictionaries for each table can be found inside subfolder `models\core` and `models\analytics`.
+- `heymax_dbt_data_tables`: Repo for dbt build tasks for both core tables (for downstream end users) and analytics tables (scheduled views and dashboarding in Looker). Transformation logic and data dictionaries for each table can be found inside subfolder `models\marts\core_tables` and `models\marts\analytics_tables`.
 
 - `dbt_docker_repo\`: Repo consisting of dbt docker image generation configurations into Artifact Registry
 
