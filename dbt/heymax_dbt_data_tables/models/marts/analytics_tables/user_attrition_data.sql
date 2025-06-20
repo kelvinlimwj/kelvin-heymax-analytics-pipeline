@@ -1,7 +1,3 @@
-{{ config(
-    materialized='table'
-) }}
-
 WITH user_data AS (
   SELECT 
     e.*,

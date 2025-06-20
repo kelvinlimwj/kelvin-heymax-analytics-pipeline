@@ -17,13 +17,13 @@ clean-targets:
 models:
   heymax_dbt_data_tables:
     staging:
-      +materialized: view
+      +materialized: table
       +dataset: heymax_staging
     marts:
       core_tables:
         +materialized: table
         +dataset: heymax_core
       analytics_tables:
-        +materialized: table
+        +materialized: view
         +dataset: heymax_analytics
         
