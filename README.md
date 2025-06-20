@@ -31,4 +31,9 @@ Stores Helm charts and configuration values for deployed Airflow instance on Kub
 
 HeyMax User Activity and User Attrition Dashboard : https://lookerstudio.google.com/reporting/819c1ac8-762e-4fb9-ac34-94d2ef2c20ba/page/p_sx1q7zgjtd
 
-(more to come in future...)
+### Future Scalability:
+
+- Usage of KubernetesExecutor (Already in use) over LocalExecutor for Kubernetes Cluster
+- Apache Kafka instead of Airflow (Self-hosted) for real-time analytics. 
+- CI/CD pipelines for DAGs (Using Github Actions and Cloud Build Triggers)
+- Monitor Airflow instance health with Prometheus or Grafana
