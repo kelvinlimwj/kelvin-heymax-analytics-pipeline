@@ -18,7 +18,6 @@ steps:
               type: bigquery
               method: oauth
               project: heymax-kelvin-analytics
-              schema: base
               location: asia-southeast1
               threads: 4
         EOF
