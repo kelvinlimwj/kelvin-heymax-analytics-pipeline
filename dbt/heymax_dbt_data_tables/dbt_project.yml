@@ -15,14 +15,13 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  heymax_dbt_data_tables:
-    staging:
-      +materialized: table
-      +dataset: heymax_staging
-    marts/core_tables:
-      +materialized: table
-      +dataset: heymax_core
-    marts/analytics_tables:
-      +materialized: view
-      +dataset: heymax_analytics
-        
+  staging:
+    +materialized: table
+    +dataset: heymax_staging
+  marts/core_tables:
+    +materialized: table
+    +dataset: heymax_core
+  marts/analytics_tables:
+    +materialized: view
+    +dataset: heymax_analytics
+      
