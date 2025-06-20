@@ -18,8 +18,8 @@ steps:
               type: bigquery
               method: oauth
               project: heymax-kelvin-analytics
-              dataset: heymax_analytics
-              location: US
+              dataset: heymax_source
+              location: asia-southeast1
               threads: 4
         EOF
         dbt deps
