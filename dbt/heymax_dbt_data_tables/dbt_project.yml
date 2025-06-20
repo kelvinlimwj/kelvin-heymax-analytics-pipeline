@@ -18,9 +18,12 @@ models:
   heymax_dbt_data_tables:
     staging:
       +materialized: view
+      +dataset: heymax_staging
     marts:
       core_tables:
         +materialized: table
+        +dataset: heymax_core
       analytics_tables:
         +materialized: table
+        +dataset: heymax_analytics
         
