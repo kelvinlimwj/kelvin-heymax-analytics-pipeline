@@ -2,7 +2,6 @@ options:
   logging: CLOUD_LOGGING_ONLY
 
 steps:
-  # Step 1: Build the image from latest base
   - name: gcr.io/cloud-builders/docker
     id: Build Image
     args: [
@@ -13,7 +12,6 @@ steps:
       "."
     ]
 
-  # Step 2: Push the staging image
   - name: gcr.io/cloud-builders/docker
     id: Push Image
     args: [
@@ -21,7 +19,6 @@ steps:
       "asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging"
     ]
 
-  # Step 3: Run validation tests (e.g. dbt test)
   - name: asia-southeast1-docker.pkg.dev/heymax-kelvin-analytics/dbt-images/dbt-runner:staging
     id: Run DBT Tests
     dir: dbt/heymax_dbt_data_tables
@@ -47,7 +44,6 @@ steps:
         dbt debug --profiles-dir /builder/home/.dbt
         dbt parse --profiles-dir /builder/home/.dbt
 
-  # Step 4: Promote image to prod only if tests succeed
   - name: gcr.io/cloud-builders/docker
     id: Promote to Prod
     args: [
