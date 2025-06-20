@@ -1,0 +1,46 @@
+version: 2
+
+models:
+  - name: stg_event_stream
+    description: "Staging table for raw user event stream data"
+    columns:
+      - name: event_time
+        description: "Timestamp when the event occurred"
+        tests:
+          - not_null
+
+      - name: user_id
+        description: "Unique identifier of the user"
+        tests:
+          - not_null
+
+      - name: event_type
+        description: "Type of user event"
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["click", "view", "purchase", "signup", "login"]
+
+      - name: transaction_category
+        description: "Category of the transaction (if any)"
+        tests: []
+
+      - name: miles_amount
+        description: "Miles awarded or spent"
+        tests: []
+
+      - name: platform
+        description: "Platform where the event occurred"
+        tests:
+          - accepted_values:
+              values: ["web", "ios", "android"]
+
+      - name: utm_source
+        description: "Marketing source"
+        tests: []
+
+      - name: country
+        description: "Country code"
+        tests:
+          - accepted_values:
+              values: ["SG", "MY", "TH", "PH", "VN"]

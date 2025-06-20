@@ -22,7 +22,8 @@ steps:
               location: asia-southeast1
               threads: 4
         EOF
-        dbt deps
+        dbt deps 
+        dbt test --profiles-dir /builder/home/.dbt
         dbt run --profiles-dir /builder/home/.dbt
 
 timeout: 900s
