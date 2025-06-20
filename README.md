@@ -34,6 +34,7 @@ HeyMax User Activity and User Attrition Dashboard : https://lookerstudio.google.
 ### Future Scalability:
 
 - Usage of KubernetesExecutor (Already in use) over LocalExecutor for Kubernetes Cluster
-- Apache Kafka instead of Airflow (Self-hosted) for real-time analytics. 
+- Use incremental build for dbt instead of building entire table
 - CI/CD pipelines for DAGs (Using Github Actions and Cloud Build Triggers)
 - Monitor Airflow instance health with Prometheus or Grafana
+- Apache Kafka (if required) instead of Airflow (Self-hosted) for real-time data streaming and analytics.
