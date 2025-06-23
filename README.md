@@ -1,6 +1,25 @@
-# HeyMax Analytics Pipelines & Data Tables Repository
+# HeyMax Datasets and Data Tables Repository and Analytics Pipelines (Airflow)
 
-This repository contains the configuration, orchestration, and transformation layers of a modern data pipeline deployed on Google Cloud Platform (GCP), from Airflow DAGs to dbt configurations, and Kubernetes cluster configuration. This repo is organized into the following directories:
+## BigQuery Datasets Overview
+
+### `heymax_source`  
+Raw data ingested from external sources such as CSV uploads, APIs, or production databases. This layer contains the untransformed source-of-truth data.
+
+---
+
+### `heymax_staging`  
+Initial transformation layer where raw data is cleaned, standardized, and prepared for modeling. 
+---
+
+### `heymax_core`  
+Core modeling layer that applies business logic to create reusable dimensional and fact tables. 
+
+---
+
+### `heymax_analytics`  
+Final layer of aggregated tables optimized for dashboarding and business intelligence consumption. These tables are typically queried by tools like Looker Studio.
+
+This repo is organized into the following directories:
 
 ## 📂 airflow_dags
 Contains Apache Airflow DAGs and their respective <b>source tables</b>. These DAGs manage the flow of data from external sources into GCP services like Google Cloud Storage (GCS) and BigQuery via REST APIs or Kafka Streaming.

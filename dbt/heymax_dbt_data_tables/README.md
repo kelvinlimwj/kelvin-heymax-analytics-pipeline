@@ -1,8 +1,8 @@
 # Core Tables: 
 Table transformation logic found under `models/marts/core_tables/`
 
-## `heymax-kelvin-analytics.heymax_analytics.dim_users` – User Dimension Table
-> **Source Table:** `heymax-kelvin-analytics.heymax_core.event_stream_raw` 
+## `heymax-kelvin-analytics.heymax_core.dim_users` – User Dimension Table
+> **Source Table:** `heymax-kelvin-analytics.heymax_staging.event_stream_raw` 
 
 > Description: Contains metadata about each user in the system. Only consists of user_id, country now. Should aim to include more dimensions such as name, phone_number, email, DOB, signup_date etc.
 
@@ -12,8 +12,8 @@ Table transformation logic found under `models/marts/core_tables/`
 | `country`       | STRING        | Country of the user, typically based on registration IP or profile information. |
 
 
-## `heymax-kelvin-analytics.heymax_analytics.fct_events` – Events Table
-> **Source Table:** `heymax-kelvin-analytics.heymax_core.event_stream_raw`  
+## `heymax-kelvin-analytics.heymax_core.fct_events` – Events Table
+> **Source Table:** `heymax-kelvin-analytics.heymax_staging.event_stream_raw`  
 
 > Description: Captures user-generated events, platform interactions and event miles accumulation.
 
@@ -36,7 +36,7 @@ Table transformation logic found under `models/marts/core_tables/`
 Table transformation logic found under `models/marts/analytics_tables/`
 
 ## `heymax-kelvin-analytics.heymax_analytics.user_attrition_data` – User Attrition Data Table
-> **Source Tables:** `heymax-kelvin-analytics.heymax_analytics.dim_users` / `heymax-kelvin-analytics.heymax_analytics.fct_events` 
+> **Source Tables:** `heymax-kelvin-analytics.heymax_core.dim_users` / `heymax-kelvin-analytics.heymax_core.fct_events` 
 
 Description: User Attrition Status based on Week on Week Activity
 
