@@ -4,17 +4,10 @@ Project: `heymax-kelvin-analytics`
 
 Datasets:
 
-1. `heymax_source` 
-Raw data ingested from external sources such as CSV uploads, APIs, or production databases. This layer contains the untransformed source-of-truth data.
-
-2. `heymax_staging`  
-Initial transformation layer where raw data is cleaned, standardized, and prepared for modeling. 
-
-3. `heymax_core`  
-Core modeling layer that applies business logic to create reusable dimensional and fact tables. 
-
-4. `heymax_analytics`  
-Final layer of aggregated tables optimized for dashboarding and business intelligence consumption. These tables are typically queried by tools like Looker Studio.
+1. `heymax_source` : Raw data ingested from external sources such as CSV uploads, APIs, or production databases. This layer contains the untransformed source-of-truth data.
+2. `heymax_staging` : Initial transformation layer where raw data is cleaned, standardized, and prepared for modeling. 
+3. `heymax_core` : Core modeling layer that applies business logic to create reusable dimensional and fact tables. 
+4. `heymax_analytics` : Final layer of aggregated tables optimized for dashboarding and business intelligence consumption. These tables are typically queried by tools like Looker Studio.
 
 ---
 
