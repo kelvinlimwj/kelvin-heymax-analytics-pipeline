@@ -49,4 +49,5 @@ HeyMax User Activity and User Attrition Dashboard : https://lookerstudio.google.
 - Use incremental build for dbt instead of building entire table
 - CI/CD pipelines for DAGs (Using Github Actions and Cloud Build Triggers)
 - Monitor Airflow instance health with Prometheus or Grafana
+- Explore usage of 3rd party tools such as Fivetran, Windsor.ai, Airbyte to manage data integration into BigQuery. (Current set up manages REST API calls and responses are placed into GCS buckets via steps in Airflow DAG)
 - Apache Kafka (if required) instead of Airflow (Self-hosted) for real-time data streaming and analytics.
