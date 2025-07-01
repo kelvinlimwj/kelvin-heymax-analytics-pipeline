@@ -46,7 +46,7 @@ HeyMax User Activity and User Attrition Dashboard : https://lookerstudio.google.
 
 - Create sandbox/staging environment off main branch (everything is done in main right now)
 - Usage of KubernetesExecutor (Already in use) over LocalExecutor for Kubernetes Cluster
-- Implementation of Managed Instance Groups for Kubernetes Airflow Cluster to prevent Airflow downtime
+- Implementation of Managed Instance Groups in GCP for Kubernetes Airflow/Kafka Cluster to prevent downtime
 - Use incremental build for dbt instead of building entire table
 - CI/CD pipelines for DAGs (Using Github Actions and Cloud Build Triggers)
 - Monitor Airflow instance health with Prometheus or Grafana
